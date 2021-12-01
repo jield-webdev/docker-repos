@@ -4,6 +4,9 @@ FROM php:8.0-cli
 MAINTAINER 'Johan van der Heide <info@jield.nl>'
 
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php80-cli-dev"
+LABEL org.opencontainers.image.description="PHP 8.0 CLI development Docker container"
+
+RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 
 # Set working directory
 WORKDIR /var/www
