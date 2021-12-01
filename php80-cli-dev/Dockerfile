@@ -1,8 +1,9 @@
-FROM php:8.1-fpm
+# dockerfile
+FROM php:8.0-cli
 
 MAINTAINER 'Johan van der Heide <info@jield.nl>'
 
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php81-dev"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php80-cli-dev"
 
 # Set working directory
 WORKDIR /var/www
