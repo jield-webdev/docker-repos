@@ -11,3 +11,8 @@ Use these containers for your PHP production and develompent stacks
 
 Johan van der Heide, Jield BV
 info@jield.nl
+
+
+== Todo
+
+https://github.com/docker/build-push-action/blob/master/docs/advanced/share-image-jobs.md
