@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-re
 LABEL org.opencontainers.image.description="PHP 8.0 FPM production Docker container for Azure"
 
 # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
-RUN apk add openssh \
+RUN apt-get install openssh \
      && echo "root:Docker!" | chpasswd
 
 # Copy the sshd_config file to the /etc/ssh/ directory
