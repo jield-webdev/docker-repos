@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine
+FROM php:8.0-fpm
 
 MAINTAINER 'Johan van der Heide <info@jield.nl>'
 

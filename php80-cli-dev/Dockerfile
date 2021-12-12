@@ -1,4 +1,4 @@
-FROM php:8.0-cli-alpine
+FROM php:8.0-cli
 
 MAINTAINER 'Johan van der Heide <info@jield.nl>'
 
