@@ -1,8 +1,5 @@
 FROM ghcr.io/jield-webdev/docker-repos/php8.0-cli:latest
 
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.0-cli"
-LABEL org.opencontainers.image.description="PHP 8.0 CLI production Docker container for Azure"
-
 # Install OpenSSH and set the password for root to "Docker!"
 RUN apt-get install -y --force-yes --no-install-recommends openssh-server
 
