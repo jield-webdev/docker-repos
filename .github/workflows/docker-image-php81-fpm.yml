@@ -1,4 +1,4 @@
-name: PHP 8.1 dev
+name: PHP 8.1 FPM
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./php80-dev
+          context: ./php81-fpm
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php81-dev:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.1-fpm:latest

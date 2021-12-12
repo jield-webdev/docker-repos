@@ -1,12 +1,9 @@
-# dockerfile
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
 MAINTAINER 'Johan van der Heide <info@jield.nl>'
 
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php80-dev"
-LABEL org.opencontainers.image.description="PHP 8.0 FPM development Docker container"
-
-RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.1-fpm"
+LABEL org.opencontainers.image.description="PHP 8.1 FPM development Docker container"
 
 # Set working directory
 WORKDIR /var/www

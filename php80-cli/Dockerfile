@@ -3,7 +3,7 @@ FROM php:8.0-cli-alpine
 MAINTAINER 'Johan van der Heide <info@jield.nl>'
 
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.0-cli"
-LABEL org.opencontainers.image.description="PHP 8.0 CLI development Docker container"
+LABEL org.opencontainers.image.description="PHP 8.0 CLI production Docker container"
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 
@@ -87,11 +87,10 @@ apt-get install -y --force-yes --no-install-recommends \
         " \
 && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
 && docker-php-ext-install -j$(nproc) $phpModules \
-&& pecl install xdebug-3.1.1 \
 && pecl install redis-5.3.4 \
 && pecl install apcu-5.1.21 \
 && pecl install igbinary-3.2.6 \
-&& docker-php-ext-enable xdebug redis apcu igbinary
+&& docker-php-ext-enable redis apcu igbinary
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
