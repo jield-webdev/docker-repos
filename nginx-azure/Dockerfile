@@ -25,4 +25,4 @@ RUN mkdir -p /opt/startup \
    && rm -rf /tmp/*
 
 ENV SSH_PORT 2222
-EXPOSE 2222
+EXPOSE 80 2222
