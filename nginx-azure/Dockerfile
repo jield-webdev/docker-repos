@@ -5,21 +5,24 @@ MAINTAINER 'Johan van der Heide <info@jield.nl>'
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/nginx"
 LABEL org.opencontainers.image.description="Azure Nginx Docker container"
 
-# Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
-RUN apk add openssh \
-     && echo "root:Docker!" | chpasswd
+COPY .docker/scripts/init_container.sh /bin/init_container.sh
 
-# Copy the sshd_config file to the /etc/ssh/ directory
-COPY .docker/ssh/sshd_config /etc/ssh
+RUN chmod 755 /bin/init_container.sh \
+    && mkdir -p /home/LogFiles/ \
+    && mkdir -p /var/www/html/ \
+    && echo "root:Docker!" | chpasswd \
+    && echo "cd /home/site/wwwroot" >> /etc/bash.bashrc \
+    && ln -s /home/site/wwwroot /var/www/html \
+    && mkdir -p /opt/startup
 
-# Copy and configure the ssh_setup file
-RUN mkdir -p /tmp
-COPY .docker/ssh/ssh_setup.sh /tmp
-RUN chmod +x /tmp/ssh_setup.sh \
-    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
+# configure startup
+COPY .docker/ssh/sshd_config /etc/ssh/sshd_config
+COPY .docker/scripts/ssh_setup.sh /tmp/ssh_setup.sh
+RUN mkdir -p /opt/startup \
+   && chmod -R +x /opt/startup \
+   && chmod -R +x /tmp/ssh_setup.sh \
+   && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
+   && rm -rf /tmp/*
 
-#Start the container
-COPY .docker/scripts/init_container.sh /tmp
-RUN chmod +x /tmp/init_container.sh \
-    && /tmp/init_container.sh \
-
+ENV SSH_PORT 2222
+EXPOSE 2222
