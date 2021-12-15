@@ -5,6 +5,9 @@ MAINTAINER 'Johan van der Heide <info@jield.nl>'
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/nginx"
 LABEL org.opencontainers.image.description="Azure Nginx Docker container"
 
+# Install OpenSSH and set the password for root to "Docker!"
+RUN apk add --no-cache openssh
+
 COPY .docker/scripts/init_container.sh /bin/init_container.sh
 
 RUN chmod 755 /bin/init_container.sh \
@@ -24,5 +27,7 @@ RUN mkdir -p /opt/startup \
    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
    && rm -rf /tmp/*
 
-ENV SSH_PORT 2222
 EXPOSE 80 2222
+
+#start the container
+ENTRYPOINT ["/bin/init_container.sh"]
