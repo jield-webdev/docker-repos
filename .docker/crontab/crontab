@@ -10,8 +10,8 @@
 SHELL=/bin/bash
 BASH_ENV=/etc/environment
 
-*    * * * * root . /etc/environment; /cronjob_1min.sh > /dev/stdout
-*/15 * * * * root . /etc/environment; /cronjob_15min.sh > /dev/stdout
-*    2 * * * root . /etc/environment; /cronjob_24hour.sh > /dev/stdout
+*    * * * * root . /etc/environment; /cronjob_1min.sh >> /var/log/cron.log 2>&1
+*/15 * * * * root . /etc/environment; /cronjob_15min.sh >> /var/log/cron.log 2>&1
+*    2 * * * root . /etc/environment; /cronjob_24hour.sh >> /var/log/cron.log 2>&1
 
 # An empty line is required at the end of this file for a valid cron file.
