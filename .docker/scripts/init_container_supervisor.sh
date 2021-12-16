@@ -7,15 +7,15 @@ cat >/etc/motd <<EOL
  | |_| || || |___| |___| |_| | | |_) |\ V /
   \___/|___|_____|_____|____/  |____/  \_/
 
-Jield BV Docker container
+Jield BV CLI/Cron Docker container (using supervisor)
 
 by: Johan van der Heide - info@jield.nl
 
 EOL
 cat /etc/motd
 
-# Get environment variables to show up in SSH session
-# shellcheck disable=SC2046
-eval $(printenv | sed -n "s/^\([^=]\+\)=\(.*\)$/export \1=\2/p" | sed 's/"/\\\"/g' | sed '/=/s//="/' | sed 's/$/"/' >>/etc/profile)
+printenv > /etc/environment
 
-exec /usr/sbin/sshd -D -e "$@" &
+touch /var/log/cron.log
+
+/usr/bin/supervisord

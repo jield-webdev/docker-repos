@@ -1,7 +1,6 @@
 FROM php:8.0-cli
 
-MAINTAINER 'Johan van der Heide <info@jield.nl>'
-
+LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.0-cli"
 LABEL org.opencontainers.image.description="PHP 8.0 CLI development Docker container"
 

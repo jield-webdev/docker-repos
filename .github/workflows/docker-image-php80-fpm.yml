@@ -59,12 +59,3 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
-
-      - name: Build and push Azure version
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./php80-fpm-azure/Dockerfile
-          platforms: linux/amd64
-          push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.0-fpm:azure
