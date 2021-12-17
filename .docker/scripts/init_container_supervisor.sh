@@ -19,6 +19,8 @@ cat /etc/motd
 # this is mainly important for CLI cronjobs
 # shellcheck disable=SC2046
 eval $(printenv | sed -n "s/^\([^=]\+\)=\(.*\)$/export \1=\2/p" | sed 's/"/\\\"/g' | sed '/=/s//="/' | sed 's/$/"/' >> /etc/profile)
+# shellcheck disable=SC2046
+eval $(printenv >> /etc/environment)
 
 # Create a file to which cron logs can be written
 touch /var/log/cron.log
