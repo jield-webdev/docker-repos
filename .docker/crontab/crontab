@@ -7,8 +7,8 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
 
-*    * * * * root . /etc/environment; /cronjob_1min.sh >> /var/log/cron.log 2>&1
-*/15 * * * * root . /etc/environment; /cronjob_15min.sh >> /var/log/cron.log 2>&1
-*    2 * * * root . /etc/environment; /cronjob_24hour.sh >> /var/log/cron.log 2>&1
+*    * * * * root /cronjob_1min.sh >> /var/log/cron.log 2>&1
+*/15 * * * * root /cronjob_15min.sh >> /var/log/cron.log 2>&1
+*    2 * * * root /cronjob_24hour.sh >> /var/log/cron.log 2>&1
 
 # An empty line is required at the end of this file for a valid cron file.
