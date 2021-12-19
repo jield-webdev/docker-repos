@@ -22,6 +22,9 @@ eval $(printenv | sed -n "s/^\([^=]\+\)=\(.*\)$/export \1=\2/p" | sed 's/"/\\\"/
 # shellcheck disable=SC2046
 eval $(printenv >> /etc/environment)
 
+# shellcheck disable=SC2046
+eval $(printenv | sed 's/\(.*\)/putenv("\1");/g' >> /var/www/putenv.php)
+
 # Create a file to which cron logs can be written
 touch /var/log/cron.log
 
