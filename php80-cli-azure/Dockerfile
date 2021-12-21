@@ -23,11 +23,15 @@ RUN rm -rf /etc/cron.*/*
 #Add some default cronjobs
 # Create a job
 ADD ./.docker/crontab/cronjob_1min.sh /cronjob_1min.sh
+ADD ./.docker/crontab/cronjob_1min.sh /cronjob_1hour.sh
 ADD ./.docker/crontab/cronjob_15min.sh /cronjob_15min.sh
 ADD ./.docker/crontab/cronjob_24hour.sh /cronjob_24hour.sh
+ADD ./.docker/crontab/cronjob_24hour.sh /cronjob_weekly.sh
 RUN chmod +x /cronjob_1min.sh
+RUN chmod +x /cronjob_1hour.sh
 RUN chmod +x /cronjob_15min.sh
 RUN chmod +x /cronjob_24hour.sh
+RUN chmod +x /cronjob_weekly.sh
 
 RUN chmod +x /init_container.sh \
     && chmod +x /init_container.sh \
