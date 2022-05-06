@@ -86,7 +86,7 @@ apt-get install -y --force-yes --no-install-recommends \
         " \
 && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
 && docker-php-ext-install -j$(nproc) $phpModules \
-&& pecl install redis-5.3.4 \
+&& pecl install redis-5.3.7 \
 && pecl install apcu-5.1.21 \
 && pecl install igbinary-3.2.6 \
 && docker-php-ext-enable redis apcu igbinary
