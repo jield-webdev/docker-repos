@@ -14,7 +14,7 @@ There are 9 versions
 * PHP 8.1 fpm
 * PHP 8.1 dev
 
-Use these containers for your PHP production and develompent stacks
+Use these containers for your PHP production and development stacks
 
 PHP versions: 8.0.19 and 8.1.6
 
