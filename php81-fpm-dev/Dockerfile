@@ -87,7 +87,7 @@ apt-get install -y --force-yes --no-install-recommends \
 && pecl install xdebug-3.1.1 \
 && pecl install redis-5.3.7 \
 && pecl install apcu-5.1.21 \
-&& pecl install igbinary-3.2.6 \
+&& pecl install igbinary-3.2.7 \
 && docker-php-ext-enable xdebug redis apcu igbinary
 
 # Install composer
