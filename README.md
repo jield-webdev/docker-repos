@@ -4,7 +4,7 @@ Dedicate repo for Dcoker Repositories
 
 There are 9 versions
 
-* PHP nginx auzre
+* PHP nginx azure
 * PHP 8.0 fpm
 * PHP 8.0 fpm dev
 * PHP 8.0 fpm azure
@@ -13,10 +13,15 @@ There are 9 versions
 * PHP 8.1 cli azure
 * PHP 8.1 fpm
 * PHP 8.1 dev
+* PHP 8.2 cli
+* PHP 8.2 cli dev (not working yet, no support of Xdebug)
+* PHP 8.1 cli azure
+* PHP 8.1 fpm
+* PHP 8.1 dev (not working yet, no support of Xdebug)
 
 Use these containers for your PHP production and development stacks
 
-PHP versions: 8.0.19 and 8.1.6
+PHP versions: 8.0.20 and 8.1.7 and 8.2.0alpha1
 
 Azure containers contain an SSH server and default Azure credentials.
 
