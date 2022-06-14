@@ -1,4 +1,4 @@
-name: PHP 8.1 cli
+name: PHP 8.2 cli
 
 on:
   push:
@@ -34,10 +34,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./php81-cli
+          context: ./php82-cli
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.1-cli:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:latest
 
 
   build-azure:
@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./php81-cli-azure/Dockerfile
+          file: ./php82-cli-azure/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.1-cli:azure
+          tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:azure
