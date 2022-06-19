@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-re
 LABEL org.opencontainers.image.description="PHP 8.2 CLI/Cronjob Docker container"
 
 # Install OpenSSH and set the password for root to "Docker!"
-RUN apt-get install -y --force-yes --no-install-recommends openssh-server cron supervisor
+RUN apt-get install -y --force-yes --no-install-recommends openssh-server cron supervisor screen
 
 ADD .docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

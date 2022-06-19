@@ -15,9 +15,9 @@ There are 9 versions
 * PHP 8.1 dev
 * PHP 8.2 cli
 * PHP 8.2 cli dev (not working yet, no support of Xdebug)
-* PHP 8.1 cli azure
-* PHP 8.1 fpm
-* PHP 8.1 dev (not working yet, no support of Xdebug)
+* PHP 8.2 cli azure
+* PHP 8.2 fpm
+* PHP 8.2 dev (not working yet, no support of Xdebug)
 
 Use these containers for your PHP production and development stacks
 
