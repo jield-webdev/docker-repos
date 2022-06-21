@@ -105,6 +105,9 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 RUN mkdir -p /home/www/.composer/cache
 RUN chmod 777 /home/www/.composer/cache
 
+# Copy and configure the ssh_setup file
+RUN mkdir -p /tmp
+
 #Copy the nginx conf
 COPY .docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 ADD .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
