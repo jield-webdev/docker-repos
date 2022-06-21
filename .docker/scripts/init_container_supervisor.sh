@@ -22,7 +22,7 @@ eval $(printenv | sed -n "s/^\([^=]\+\)=\(.*\)$/export \1=\2/p" | sed 's/"/\\\"/
 # shellcheck disable=SC2046
 eval $(printenv >>/etc/environment)
 
-#We create a simple PHP file which includes all parameters and can be incluced in any PHP script
+#We create a simple PHP file which includes all parameters and can be included in any PHP script
 #It is available in the /var/www folder
 
 # shellcheck disable=SC2028

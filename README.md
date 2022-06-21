@@ -12,6 +12,7 @@ There are 9 versions
 * PHP 8.1 cli dev
 * PHP 8.1 cli azure
 * PHP 8.1 fpm
+* PHP 8.1 nginx (for azure)
 * PHP 8.1 dev
 * PHP 8.2 cli
 * PHP 8.2 cli dev (not working yet, no support of Xdebug)

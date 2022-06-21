@@ -109,7 +109,7 @@ RUN chmod 777 /home/www/.composer/cache
 RUN mkdir -p /tmp
 
 #Copy the nginx conf
-COPY .docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
 ADD .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY .docker/scripts/init_container_nginx.sh /init_container.sh
