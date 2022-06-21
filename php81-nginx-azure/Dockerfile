@@ -86,13 +86,13 @@ apt-get install -y --no-install-recommends \
             tidy \
             xsl \
             zip \
-        "
-#&& docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
-#&& docker-php-ext-install -j$(nproc) $phpModules \
-#&& pecl install redis-5.3.7 \
-#&& pecl install apcu-5.1.21 \
-#&& pecl install igbinary-3.2.7 \
-#&& docker-php-ext-enable redis apcu igbinary
+        " \
+&& docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp \
+&& docker-php-ext-install -j$(nproc) $phpModules \
+&& pecl install redis-5.3.7 \
+&& pecl install apcu-5.1.21 \
+&& pecl install igbinary-3.2.7 \
+&& docker-php-ext-enable redis apcu igbinary
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -125,12 +125,8 @@ RUN mkdir -p /opt/startup \
    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
    && rm -rf /tmp/*
 
-
 # Open port 2222 for SSH access
 EXPOSE 80 2222
-
-
-
 
 #Start supervisor
 CMD '/init_container.sh'
