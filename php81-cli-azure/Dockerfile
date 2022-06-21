@@ -34,7 +34,6 @@ RUN chmod +x /cronjob_24hour.sh
 RUN chmod +x /cronjob_weekly.sh
 
 RUN chmod +x /init_container.sh \
-    && chmod +x /init_container.sh \
     && mkdir -p /home/LogFiles/ \
     && echo "root:Docker!" | chpasswd \
     && mkdir -p /opt/startup

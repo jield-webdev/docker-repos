@@ -7,11 +7,12 @@ cat >/etc/motd <<EOL
  | |_| || || |___| |___| |_| | | |_) |\ V /
   \___/|___|_____|_____|____/  |____/  \_/
 
-Jield BV Nginx Docker container
+Jield BV Nginx container (Including PHP 8.1 for Azure)
 
 by: Johan van der Heide - info@jield.nl
 
 EOL
 cat /etc/motd
 
-/usr/sbin/sshd
+# Start the supervisor
+/usr/bin/supervisord
