@@ -34,7 +34,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./php81-nginx-azure
+          context: .
+          file: ./php81-nginx-azure/Dockerfile #Use this format so we have access to the scripts folder
           platforms: linux/amd64
           push: true
           tags: ghcr.io/jield-webdev/docker-repos/php8.1-nginx-azure:latest

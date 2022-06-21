@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./php82-cli-azure/Dockerfile
+          file: ./php82-cli-azure/Dockerfile #Use this format so we have access to the scripts folder
           platforms: linux/amd64
           push: true
           tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:azure
