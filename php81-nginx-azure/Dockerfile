@@ -118,7 +118,7 @@ RUN chmod +x /init_container.sh \
 
 # configure startup
 COPY .docker/ssh/sshd_config /etc/ssh/sshd_config
-#COPY .docker/scripts/ssh_setup.sh /tmp/ssh_setup.sh
+COPY .docker/scripts/ssh_setup.sh /tmp/ssh_setup.sh
 RUN mkdir -p /opt/startup \
    && chmod -R +x /opt/startup \
    && chmod -R +x /tmp/ssh_setup.sh \
