@@ -118,12 +118,11 @@ RUN chmod +x /init_container.sh \
 
 # configure startup
 COPY .docker/ssh/sshd_config /etc/ssh/sshd_config
-COPY .docker/scripts/ssh_setup.sh /ssh_setup.sh
+COPY .docker/scripts/ssh_setup.sh /etc/ssh/ssh_setup.sh
 RUN mkdir -p /opt/startup \
    && chmod -R +x /opt/startup \
-   && chmod -R +x /ssh_setup.sh \
-   && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
-   && rm -rf /tmp/*
+   && chmod -R +x /etc/ssh/ssh_setup.sh \
+   && (sleep 1;/etc/ssh/ssh_setup.sh 2>&1 > /dev/null)
 
 # Open port 2222 for SSH access
 EXPOSE 80 2222
