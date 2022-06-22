@@ -26,6 +26,7 @@ RUN apt-get update && \
 apt-get install -y --no-install-recommends \
     supervisor \
     openssh-server \
+    redis-server \
     nginx-full
 
 # Copy and configure the ssh_setup file
