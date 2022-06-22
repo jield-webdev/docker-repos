@@ -32,6 +32,3 @@ eval $(printenv | sed 's/\(.*\)/putenv("\1");/g' >>/var/www/putenv.php)
 
 # Create a file to which cron logs can be written
 touch /var/log/cron.log
-
-# Start the supervisor
-/usr/bin/supervisord

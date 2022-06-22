@@ -51,4 +51,6 @@ RUN mkdir -p /opt/startup \
 EXPOSE 2222
 
 #Start supervisor
-CMD '/init_container.sh'
+RUN /init_container.sh
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

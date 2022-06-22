@@ -7,8 +7,7 @@ LABEL org.opencontainers.image.description="PHP 8.0 CLI/Cronjob Docker container
 # Install OpenSSH and set the password for root to "Docker!"
 RUN apt-get update && apt-get install -y --no-install-recommends openssh-server cron supervisor screen
 
-ADD .docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
+COPY .docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY .docker/scripts/init_container_supervisor.sh /init_container.sh
 
 # Add the cronjobs
@@ -51,4 +50,6 @@ RUN mkdir -p /opt/startup \
 EXPOSE 2222
 
 #Start supervisor
-CMD '/init_container.sh'
+RUN /init_container.sh
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

@@ -33,8 +33,7 @@ RUN mkdir -p /tmp
 
 #Copy the nginx conf
 COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
-ADD .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
-
+COPY .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
 COPY .docker/scripts/init_container_nginx.sh /init_container.sh
 
 RUN chmod +x /init_container.sh \
@@ -47,6 +46,7 @@ COPY .docker/ssh/sshd_config /etc/ssh/sshd_config
 COPY .docker/scripts/ssh_setup.sh /tmp/ssh_setup.sh
 RUN mkdir -p /opt/startup \
    && chmod -R +x /opt/startup \
+   && chmod -R +x /init_container.sh \
    && chmod -R +x /tmp/ssh_setup.sh \
    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
    && rm -rf /tmp/*
@@ -55,4 +55,6 @@ RUN mkdir -p /opt/startup \
 EXPOSE 80 2222
 
 #Start supervisor
-CMD '/init_container.sh'
+RUN /init_container.sh
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

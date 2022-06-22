@@ -13,6 +13,3 @@ by: Johan van der Heide - info@jield.nl
 
 EOL
 cat /etc/motd
-
-# Start the supervisor
-/usr/bin/supervisord
