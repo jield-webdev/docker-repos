@@ -5,6 +5,14 @@ LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-re
 LABEL org.opencontainers.image.description="PHP 8.1 Nginx production Docker container (for Azure)"
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
+RUN echo 'memory_limit = 2G' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+RUN echo 'max_input_vars = 10000' >> /usr/local/etc/php/conf.d/docker-php-maxinputvars.ini;
+RUN echo 'upload_max_filesize = 32M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini;
+RUN echo 'post_max_size = 32M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini;
+RUN echo 'max_execution_time = 300' >> /usr/local/etc/php/conf.d/docker-php-max-execution.ini;
+RUN echo 'opcache.max_accelerated_files = 20000' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
+RUN echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
+RUN echo 'realpath_cache_ttl=600' >> /usr/local/etc/php/conf.d/docker-php-realpatch-cache.ini;
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -12,7 +20,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis apcu igbinary
+RUN install-php-extensions gd redis apcu igbinary intl gettext zip opcache soap bcmath pdo_mysql
 
 RUN apt-get update && \
 apt-get install -y --no-install-recommends \
