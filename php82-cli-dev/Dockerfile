@@ -1,4 +1,4 @@
-FROM php:8.2.0alpha1-cli
+FROM php:8.2.0alpha3-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.2-cli"
@@ -12,4 +12,4 @@ RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-ph
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+RUN install-php-extensions gd redis apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
