@@ -22,7 +22,7 @@ There are 9 versions
 
 Use these containers for your PHP production and development stacks
 
-PHP versions: 8.0.22 and 8.1.9 and 8.2.0alpha3
+PHP versions: 8.0.23 and 8.1.10 and 8.2.0RC1
 
 Azure containers contain an SSH server and default Azure credentials.
 
