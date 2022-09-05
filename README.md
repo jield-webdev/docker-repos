@@ -2,7 +2,7 @@
 
 Dedicate repo for Docker Repositories
 
-There are 9 versions
+There are 15 versions
 
 * PHP nginx azure
 * PHP 8.0 fpm
