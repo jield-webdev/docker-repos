@@ -4,25 +4,24 @@ Dedicate repo for Docker Repositories
 
 There are 15 versions
 
-* PHP nginx azure
+* PHP 8.0 cli
+* PHP 8.0 
 * PHP 8.0 fpm
 * PHP 8.0 fpm dev
-* PHP 8.0 fpm azure
+* PHP 8.0 nginx (for azure)
 * PHP 8.1 cli
 * PHP 8.1 cli dev
-* PHP 8.1 cli azure
 * PHP 8.1 fpm
 * PHP 8.1 nginx (for azure)
 * PHP 8.1 dev
 * PHP 8.2 cli
-* PHP 8.2 cli dev
-* PHP 8.2 cli azure
+* PHP 8.2 nginx (for azure)
 * PHP 8.2 fpm
 * PHP 8.2 dev
 
 Use these containers for your PHP production and development stacks
 
-PHP versions: 8.0.24 and 8.1.11 and 8.2.0RC3
+PHP versions: 8.0.25 and 8.1.12 and 8.2.0RC5
 
 Azure containers contain an SSH server and default Azure credentials.
 

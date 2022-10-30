@@ -1,4 +1,4 @@
-name: PHP 8.1 Nginx (Azure)
+name: PHP 8.2 Nginx (Azure)
 
 on:
   push:
@@ -38,4 +38,4 @@ jobs:
           file: ./php81-nginx-azure/Dockerfile #Use this format so we have access to the scripts folder
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.1-nginx-azure:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.2-nginx-azure:latest

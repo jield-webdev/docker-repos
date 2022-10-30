@@ -1,8 +1,8 @@
-FROM php:8.1-fpm
+FROM php:8.2.0RC5-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.1-nginx-azure"
-LABEL org.opencontainers.image.description="PHP 8.1 Nginx production Docker container (for Azure)"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.2-nginx-azure"
+LABEL org.opencontainers.image.description="PHP 8.2 Nginx production Docker container (for Azure)"
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 RUN echo 'memory_limit = 2G' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
@@ -35,7 +35,7 @@ RUN mkdir -p /tmp
 #Copy the nginx conf
 COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
 COPY .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
-COPY .docker/scripts/init_container_php81.sh /init_container.sh
+COPY .docker/scripts/init_container_php82.sh /init_container.sh
 
 RUN chmod +x /init_container.sh \
     && mkdir -p /home/LogFiles/ \

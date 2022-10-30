@@ -35,6 +35,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./php80-cli-dev
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: ghcr.io/jield-webdev/docker-repos/php8.0-cli:dev
