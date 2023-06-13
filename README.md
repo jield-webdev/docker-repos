@@ -24,9 +24,9 @@ Use these containers for your PHP production and development stacks
 
 PHP versions: 
 
-- 8.0.28
-- 8.1.19
-- 8.2.6
+- 8.0.29
+- 8.1.20
+- 8.2.7
 
 Azure containers contain an SSH server and default Azure credentials.
 
