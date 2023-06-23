@@ -1,13 +1,13 @@
-name: PHP 8.0 FPM (dev)
+name: PHP 8.3 cli dev
 
 on:
   push:
     branches:
-      - main
+      - main2
       - develop
   pull_request:
     branches:
-      - main
+      - main2
       - develop
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./php80-fpm-dev
-          platforms: linux/amd64
+          context: ./php83-cli-dev
+          platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.0-fpm:dev
+          tags: ghcr.io/jield-webdev/docker-repos/php8.3-cli:dev

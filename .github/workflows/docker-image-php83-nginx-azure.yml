@@ -1,4 +1,4 @@
-name: PHP 8.0 cli dev
+name: PHP 8.3 Nginx (Azure)
 
 on:
   push:
@@ -34,7 +34,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./php80-cli-dev
+          context: .
+          file: ./php83-nginx-azure/Dockerfile #Use this format so we have access to the scripts folder
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.0-cli:dev
+          tags: ghcr.io/jield-webdev/docker-repos/php8.3-nginx-azure:latest
