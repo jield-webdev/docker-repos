@@ -1,4 +1,4 @@
-name: PHP 8.1 cli dev
+name: PHP 8.1 cli (dev)
 
 on:
   push:

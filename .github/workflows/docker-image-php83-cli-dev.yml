@@ -1,13 +1,13 @@
-name: PHP 8.3 cli dev
+name: PHP 8.3 cli (dev)
 
 on:
   push:
     branches:
-      - main2
+      - main
       - develop
   pull_request:
     branches:
-      - main2
+      - main
       - develop
 
 jobs:

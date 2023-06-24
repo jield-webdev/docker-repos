@@ -1,13 +1,13 @@
-name: PHP 8.3 FPM
+name: PHP 8.3 FPM (dev)
 
 on:
   push:
     branches:
-      - main2
+      - main
       - develop
   pull_request:
     branches:
-      - main2
+      - main
       - develop
 
 jobs:
