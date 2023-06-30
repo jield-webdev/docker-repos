@@ -15,8 +15,7 @@ There are 10 versions
 * PHP 8.3 fpm (latest, dev)
 * PHP 8.3 nginx (for azure)
 
-The dev containers are the same as the latest, but only include Xdebug
-
+The dev containers are the same as the latest, but only include Xdebug (except for PHP 8.3, which is not yet supported by Xdebug)
 Use these containers for your PHP production and development stacks
 
 PHP versions: 
