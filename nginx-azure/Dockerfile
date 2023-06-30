@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/nginx"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="Azure Nginx Docker container"
 
 RUN apk add openssh \

@@ -1,7 +1,7 @@
 FROM php:8.1-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.1-cli"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.1 CLI production Docker container"
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;

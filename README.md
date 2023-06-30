@@ -23,7 +23,7 @@ PHP versions:
 
 - 8.1.20
 - 8.2.7
-- 8.3.0 alpha1
+- 8.3.0 alpha2
 
 Azure containers contain an SSH server and default Azure credentials.
 

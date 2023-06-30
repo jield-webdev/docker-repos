@@ -1,7 +1,7 @@
 FROM php:8.2-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.2-fpm"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.2 FPM development Docker container"
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/

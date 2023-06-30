@@ -1,7 +1,7 @@
-FROM php:8.3.0alpha1-fpm
+FROM php:8.3.0alpha2-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.3-nginx-azure"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.3 Nginx production Docker container (for Azure)"
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;

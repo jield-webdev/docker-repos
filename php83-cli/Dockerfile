@@ -1,7 +1,7 @@
-FROM php:8.3.0alpha1-cli
+FROM php:8.3.0alpha2-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
-LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos/php8.3-cli"
+LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.3 CLI production Docker container"
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
