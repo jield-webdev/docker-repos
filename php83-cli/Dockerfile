@@ -1,4 +1,4 @@
-FROM php:8.3.0RC1-cli
+FROM php:8.3.0RC3-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
