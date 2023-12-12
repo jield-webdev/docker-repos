@@ -1,4 +1,4 @@
-FROM ghcr.io/jield-webdev/docker-repos/php8.2-cli
+FROM ghcr.io/jield-webdev/docker-repos/php8.2-cli:latest
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
