@@ -3,11 +3,11 @@ name: Nginx Azure Containers
 on:
   push:
     branches:
-      - main
+      - main_block
       - develop
   pull_request:
     branches:
-      - main
+      - main_block
       - develop
 
 jobs:

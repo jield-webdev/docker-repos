@@ -3,11 +3,11 @@ name: PHP 8.1 FPM (dev)
 on:
   push:
     branches:
-      - main
+      - main_block
       - develop
   pull_request:
     branches:
-      - main
+      - main_block
       - develop
 
 jobs:
