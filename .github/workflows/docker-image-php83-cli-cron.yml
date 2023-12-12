@@ -1,4 +1,4 @@
-name: PHP 8.2 cli
+name: PHP 8.3 cli/cron
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./php82-cli
+          context: ./php83-cli-cron
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.3-cli-cron:latest

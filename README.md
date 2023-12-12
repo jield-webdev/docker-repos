@@ -10,8 +10,10 @@ There are 10 versions
 * PHP 8.1 nginx (for azure)
 * PHP 8.2 cli (latest, dev)
 * PHP 8.2 fpm (latest, dev)
+* PHP 8.2 cli (as docker container)
 * PHP 8.2 nginx (for azure)
 * PHP 8.3 cli (latest, dev)
+* PHP 8.3 cli (as docker container)
 * PHP 8.3 fpm (latest, dev)
 * PHP 8.3 nginx (for azure)
 

@@ -22,13 +22,10 @@ eval $(printenv | sed -n "s/^\([^=]\+\)=\(.*\)$/export \1=\2/p" | sed 's/"/\\\"/
 # shellcheck disable=SC2046
 eval $(printenv >>/etc/environment)
 
-#We create a simple PHP file which includes all parameters and can be included in any PHP script
-#It is available in the /var/www folder
+crontab /etc/cron.d/cronjobs
 
-# shellcheck disable=SC2028
-echo '<?php\n' >/var/www/putenv.php
-# shellcheck disable=SC2046
-eval $(printenv | sed 's/\(.*\)/putenv("\1");/g' >>/var/www/putenv.php)
-
-# Create a file to which cron logs can be written
-touch /var/log/cron.log
+if [ -z "$@" ]; then
+  exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf --nodaemon
+else
+  exec PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $@
+fi

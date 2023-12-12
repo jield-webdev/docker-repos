@@ -35,7 +35,7 @@ RUN mkdir -p /tmp
 #Copy the nginx conf
 COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
 COPY .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
-COPY .docker/scripts/init_container_php82.sh /init_container.sh
+COPY .docker/scripts/init_container_php83.sh /init_container.sh
 
 RUN chmod +x /init_container.sh \
     && mkdir -p /home/LogFiles/ \
