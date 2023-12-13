@@ -12,7 +12,7 @@ COPY .docker/crontab/crontab.sample /etc/cron.d/cronjobs
 
 # Copy entrypoint file to the etc
 COPY .docker/scripts/entrypoint_cron.sh /etc/entrypoint.sh
-COPY .docker/supervisor/supervisord.cron.conf /etc/supervisor/supervisord.conf
+COPY .docker/supervisor/supervisord.cron.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Give correct rights to the cron job
 RUN chmod 0644 /etc/cron.d/cronjobs
