@@ -4,6 +4,9 @@ LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.2 CLI production Docker container for cronjobs"
 
+# Set working directory
+WORKDIR /var/www
+
 ## Install cron, redis and supervisor
 RUN apt-get update && apt-get install -y cron redis-server supervisor nano
 
@@ -12,7 +15,7 @@ COPY .docker/crontab/crontab.sample /etc/cron.d/cronjobs
 
 # Copy entrypoint file to the etc
 COPY .docker/scripts/entrypoint_cron.sh /etc/entrypoint.sh
-COPY .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
+COPY .docker/supervisor/supervisord.cron.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Give correct rights to the cron job
 RUN chmod 0644 /etc/cron.d/cronjobs
