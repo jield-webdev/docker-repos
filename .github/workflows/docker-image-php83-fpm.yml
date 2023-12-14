@@ -3,11 +3,11 @@ name: PHP 8.3 FPM
 on:
   push:
     branches:
-      - main_block
+      - main
       - develop
   pull_request:
     branches:
-      - main_block
+      - main
       - develop
 
 jobs:
