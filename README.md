@@ -19,7 +19,7 @@ Tags:
 
 The dev containers are the same as the latest, but only include Xdebug. The CRON containers are the same as the CLI
 latest, but only include the cron daemon. The Azure containers are the same as the latest, but include NGINX, an SSH
-server and Redis, so they can operate a single container app in Azure
+server and Redis, so they can operate a single container app in Azure.
 
 PHP versions:
 
