@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.description="PHP 8.1 CLI production Docker contai
 ENV TZ="Europe/Amsterdam"
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
 
