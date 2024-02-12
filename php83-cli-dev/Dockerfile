@@ -10,8 +10,9 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
+RUN echo 'xdebug.mode=coverage' >> /usr/local/etc/php/conf.d/docker-php-xdebug.ini;
 
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
+RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug

@@ -22,7 +22,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
 
 RUN apt-get update && \
 apt-get install -y --no-install-recommends \
