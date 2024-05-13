@@ -24,8 +24,8 @@ server and Redis, so they can operate a single container app in Azure.
 PHP versions:
 
 - 8.1.28
-- 8.2.18
-- 8.3.6
+- 8.2.19
+- 8.3.7
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (info@jield.nl)
