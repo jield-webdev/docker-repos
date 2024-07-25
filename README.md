@@ -1,7 +1,7 @@
 # docker-repos
 
 Dedicate repo for Docker Repositories
-There are several flavors, all for PHP 8.1, 8.2 and 8.3
+There are several flavors, all for PHP 8.1, 8.2, 8.3, and 8.4:
 
 * NGINX (azure)
 * CLI (latest, dev)
@@ -23,8 +23,9 @@ server and Redis, so they can operate a single container app in Azure.
 PHP versions:
 
 - 8.1.29
-- 8.2.20
-- 8.3.8
+- 8.2.21
+- 8.3.9
+- 8.4.0 alpha 2
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (info@jield.nl)
