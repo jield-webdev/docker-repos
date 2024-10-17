@@ -14,7 +14,7 @@ RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcac
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 
 ## Install cron, redis and supervisor
-RUN apt-get update && apt-get install -y cron redis-server supervisor nano
+RUN apt-get update && apt-get install -y cron redis-server supervisor nano zip
 
 # Set working directory
 WORKDIR /var/www

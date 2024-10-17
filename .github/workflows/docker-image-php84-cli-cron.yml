@@ -1,4 +1,4 @@
-name: PHP 8.4 RC1 FPM (dev)
+name: PHP 8.4 cli/cron
 
 on:
   push:
@@ -34,7 +34,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./php84-fpm-dev
+          context: .
+          file: ./php83-cli-cron/Dockerfile #Use this format so we have access to the scripts folder
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.4-fpm:dev
+          tags: ghcr.io/jield-webdev/docker-repos/php8.4-cli-cron:latest

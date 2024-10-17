@@ -1,8 +1,8 @@
-FROM php:8.4.0RC1-cli
+FROM php:8.4.0RC2-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.4 alpha 2 CLI production Docker container"
+LABEL org.opencontainers.image.description="PHP 8.4 RC2 CLI production Docker container"
 
 ENV TZ="Europe/Amsterdam"
 
@@ -15,4 +15,6 @@ RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-ph
 WORKDIR /var/www
 
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
-#RUN install-php-extensions xdebug
+
+RUN apt-get update && \
+apt-get install -y --no-install-recommends zip

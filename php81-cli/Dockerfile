@@ -15,3 +15,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+
+RUN apt-get update && \
+apt-get install -y --no-install-recommends zip

@@ -29,7 +29,8 @@ apt-get install -y --no-install-recommends \
     supervisor \
     openssh-server \
     redis-server \
-    nginx-full
+    nginx-full \
+    zip
 
 # Copy and configure the ssh_setup file
 RUN mkdir -p /tmp

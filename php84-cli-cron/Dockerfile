@@ -1,8 +1,8 @@
-FROM php:8.4.0RC1-cli
+FROM php:8.4.0RC2-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.4 alpha 2 CLI production Docker container for cronjobs"
+LABEL org.opencontainers.image.description="PHP 8.4 RC2 CLI production Docker container for cronjobs"
 
 ENV TZ="Europe/Amsterdam"
 
@@ -14,7 +14,7 @@ RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcac
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 
 ## Install cron, redis and supervisor
-RUN apt-get update && apt-get install -y cron redis-server supervisor nano
+RUN apt-get update && apt-get install -y cron redis-server supervisor nano zip
 
 # Set working directory
 WORKDIR /var/www
