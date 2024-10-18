@@ -18,4 +18,4 @@ WORKDIR /var/www
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends zip
+apt-get install -y --no-install-recommends zip unzip

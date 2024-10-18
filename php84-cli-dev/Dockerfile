@@ -10,7 +10,7 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends zip
+apt-get install -y --no-install-recommends zip unzip
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 RUN echo 'xdebug.mode=coverage' >> /usr/local/etc/php/conf.d/docker-php-xdebug.ini;
@@ -21,4 +21,4 @@ WORKDIR /var/www
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug-beta
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends zip
+apt-get install -y --no-install-recommends zip unzip
