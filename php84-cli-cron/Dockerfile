@@ -1,8 +1,8 @@
-FROM php:8.4.0RC2-cli
+FROM php:8.4.0RC3-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.4 RC2 CLI production Docker container for cronjobs"
+LABEL org.opencontainers.image.description="PHP 8.4 RC3 CLI production Docker container for cronjobs"
 
 ENV TZ="Europe/Amsterdam"
 
