@@ -1,17 +1,17 @@
 # docker-repos
 
 Dedicate repo for Docker Repositories
-There are several flavors, all for PHP 8.1, 8.2, 8.3, and 8.4:
+There are several flavours, all for PHP 8.2, 8.3, and 8.4:
 
 * NGINX (azure)
-* CLI (latest, dev)
+* CLI (dev)
 * FPM (latest, dev)
+* Worker (latest, dev)
 
 Tags:
 
-* ghcr.io/jield-webdev/docker-repos/php8.X-cli:latest
 * ghcr.io/jield-webdev/docker-repos/php8.X-cli:dev
-* ghcr.io/jield-webdev/docker-repos/php8.X-cli-cron:latest
+* ghcr.io/jield-webdev/docker-repos/php8.X-worker:latest
 * ghcr.io/jield-webdev/docker-repos/php8.X-fpm:latest
 * ghcr.io/jield-webdev/docker-repos/php8.X-fpm:dev
 * ghcr.io/jield-webdev/docker-repos/php8.X-nginx-azure:latest
@@ -22,10 +22,9 @@ server and Redis, so they can operate a single container app in Azure.
 
 PHP versions:
 
-- 8.1.30
-- 8.2.25
-- 8.3.13
-- 8.4.0 RC3
+- 8.2.26
+- 8.3.14
+- 8.4.1
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (info@jield.nl)

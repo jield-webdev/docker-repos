@@ -1,8 +1,8 @@
-FROM php:8.1-fpm
+FROM php:8.4-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.1 Nginx production Docker container (for Azure)"
+LABEL org.opencontainers.image.description="PHP 8.4 Nginx production Docker container (for Azure)"
 
 ENV TZ="Europe/Amsterdam"
 
@@ -38,7 +38,7 @@ RUN mkdir -p /tmp
 #Copy the nginx conf
 COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
 COPY .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
-COPY .docker/scripts/init_container_php81.sh /init_container.sh
+COPY .docker/scripts/init_container_php84.sh /init_container.sh
 
 RUN chmod +x /init_container.sh \
     && mkdir -p /home/LogFiles/ \

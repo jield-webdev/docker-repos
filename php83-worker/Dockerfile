@@ -2,7 +2,7 @@ FROM php:8.3-cli
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.3 CLI production Docker container for cronjobs"
+LABEL org.opencontainers.image.description="PHP 8.3 CLI production Docker worker container"
 
 ENV TZ="Europe/Amsterdam"
 

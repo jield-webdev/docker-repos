@@ -7,7 +7,7 @@ cat >/etc/motd <<EOL
  | |_| || || |___| |___| |_| | | |_) |\ V /
   \___/|___|_____|_____|____/  |____/  \_/
 
-Jield BV CLI/Cron/Worker Docker container (using supervisor)
+Jield BV CLI/Worker Docker container (using supervisor)
 
 by: Johan van der Heide - info@jield.nl
 

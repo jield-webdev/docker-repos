@@ -1,4 +1,4 @@
-name: PHP 8.2 cli (dev)
+name: PHP 8.2 CLI (dev)
 
 on:
   push:

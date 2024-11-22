@@ -1,8 +1,8 @@
-FROM php:8.4.0RC3-fpm
+FROM php:8.4-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.4 alpha FPM development Docker container"
+LABEL org.opencontainers.image.description="PHP 8.4 FPM development Docker container"
 
 ENV TZ="Europe/Amsterdam"
 
