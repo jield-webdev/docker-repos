@@ -1,4 +1,4 @@
-name: PHP 8.4 RC1 FPM (dev)
+name: PHP 8.4 FPM (dev)
 
 on:
   push:
