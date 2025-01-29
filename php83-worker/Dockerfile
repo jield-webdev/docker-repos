@@ -6,11 +6,10 @@ LABEL org.opencontainers.image.description="PHP 8.3 CLI production Docker worker
 
 ENV TZ="Europe/Amsterdam"
 
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-#RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
-RUN install-php-extensions gd redis xsl igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
 
 RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 

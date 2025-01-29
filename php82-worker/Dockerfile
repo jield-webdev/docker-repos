@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.description="PHP 8.2 CLI production Docker worker
 
 ENV TZ="Europe/Amsterdam"
 
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 #RUN install-php-extensions gd redis xsl igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql

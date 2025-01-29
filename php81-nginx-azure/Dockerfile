@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.1.31-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
@@ -16,14 +16,13 @@ RUN echo 'opcache.max_accelerated_files = 20000' >> /usr/local/etc/php/conf.d/do
 RUN echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
 RUN echo 'realpath_cache_ttl=600' >> /usr/local/etc/php/conf.d/docker-php-realpatch-cache.ini;
 
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /var/www
 
-#RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
-RUN install-php-extensions gd redis xsl igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
 
 RUN apt-get update && \
 apt-get install -y --no-install-recommends \
