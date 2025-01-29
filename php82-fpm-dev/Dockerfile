@@ -14,4 +14,5 @@ RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-ph
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
+#RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
+RUN install-php-extensions gd redis xsl igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
