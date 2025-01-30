@@ -58,4 +58,4 @@ jobs:
           context: ./php82-cli-dev
           platforms: linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:dev
+          tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:arm64

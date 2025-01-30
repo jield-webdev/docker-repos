@@ -59,4 +59,4 @@ jobs:
           file: ./php82-worker/Dockerfile # Use this format so we have access to the scripts folder
           platforms: linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.2-worker:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.2-worker:arm64
