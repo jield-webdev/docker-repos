@@ -57,4 +57,4 @@ jobs:
           context: ./php83-fpm-dev
           platforms: linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.3-fpm:dev
+          tags: ghcr.io/jield-webdev/docker-repos/php8.3-fpm:arm64
