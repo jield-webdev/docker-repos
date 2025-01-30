@@ -33,7 +33,7 @@ jobs:
           file: ./php83-worker/Dockerfile # Use this format so we have access to the scripts folder
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.3-worker:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.3-worker:amd64
 
   build-arm64:
     runs-on: ubuntu-24.04-arm
@@ -59,4 +59,4 @@ jobs:
           file: ./php83-worker/Dockerfile # Use this format so we have access to the scripts folder
           platforms: linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.3-worker:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.3-worker:arm64
