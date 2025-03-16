@@ -15,6 +15,7 @@ RUN echo 'max_execution_time = 300' >> /usr/local/etc/php/conf.d/docker-php-max-
 RUN echo 'opcache.max_accelerated_files = 20000' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
 RUN echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
 RUN echo 'realpath_cache_ttl=600' >> /usr/local/etc/php/conf.d/docker-php-realpatch-cache.ini;
+RUN echo 'expose_php=off' >> /usr/local/etc/php/conf.d/docker-php-expose.ini;
 
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -25,7 +26,7 @@ WORKDIR /var/www
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends \
     supervisor \
     openssh-server \
     redis-server \
@@ -49,11 +50,11 @@ RUN chmod +x /init_container.sh \
 COPY .docker/ssh/sshd_config /etc/ssh/sshd_config
 COPY .docker/scripts/ssh_setup.sh /tmp/ssh_setup.sh
 RUN mkdir -p /opt/startup \
-   && chmod -R +x /opt/startup \
-   && chmod -R +x /init_container.sh \
-   && chmod -R +x /tmp/ssh_setup.sh \
-   && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
-   && rm -rf /tmp/*
+    && chmod -R +x /opt/startup \
+    && chmod -R +x /init_container.sh \
+    && chmod -R +x /tmp/ssh_setup.sh \
+    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
+    && rm -rf /tmp/*
 
 # Open port 2222 for SSH access
 EXPOSE 80 2222
