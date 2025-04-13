@@ -57,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./php84-nginx-azure/Dockerfile #Use this format so we have access to the scripts folder
+          file: ./php84-nginx-azure/ast/Dockerfile #Use this format so we have access to the scripts folder
           platforms: linux/amd64
           push: true
           tags: ghcr.io/jield-webdev/docker-repos/php8.4-nginx-azure:ast-time
