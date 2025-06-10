@@ -24,8 +24,8 @@ PHP versions:
 
 - 8.1.32 (only Azure container)
 - 8.2.28
-- 8.3.21
-- 8.4.7
+- 8.3.22
+- 8.4.8
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (johan.vanderheide@jield.nl)
