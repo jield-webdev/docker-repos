@@ -18,7 +18,7 @@ RUN echo 'xdebug.mode=coverage' >> /usr/local/etc/php/conf.d/docker-php-xdebug.i
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug-3.4.2
+RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
 
 RUN apt-get update && \
 apt-get install -y --no-install-recommends zip unzip git
