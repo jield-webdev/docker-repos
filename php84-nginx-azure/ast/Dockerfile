@@ -4,11 +4,6 @@ LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.4 Nginx production Docker container (for Azure)"
 
-ARG GIT_COMMIT
-ARG BUILD_DATE
-
-ENV GIT_COMMIT_SHA=$GIT_COMMIT
-ENV BUILD_DATE=$BUILD_DATE
 ENV TZ="America/Glace_Bay"
 
 RUN echo 'date.timezone=America/Glace_Bay' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
