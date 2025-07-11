@@ -5,6 +5,7 @@ LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-re
 LABEL org.opencontainers.image.description="PHP 8.4 Nginx production Docker container (for Azure)"
 
 ENV TZ="America/Glace_Bay"
+
 RUN echo 'date.timezone=America/Glace_Bay' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
 RUN echo 'memory_limit = 2G' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 RUN echo 'max_input_vars = 10000' >> /usr/local/etc/php/conf.d/docker-php-maxinputvars.ini;
@@ -15,6 +16,7 @@ RUN echo 'opcache.max_accelerated_files = 20000' >> /usr/local/etc/php/conf.d/do
 RUN echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
 RUN echo 'realpath_cache_ttl=600' >> /usr/local/etc/php/conf.d/docker-php-realpatch-cache.ini;
 RUN echo 'expose_php=off' >> /usr/local/etc/php/conf.d/docker-php-expose.ini;
+RUN echo 'error_reporting = E_ALL & ~E_DEPRECATED' >> /usr/local/etc/php/conf.d/docker-php-error_reporting.ini;
 
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -22,7 +24,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

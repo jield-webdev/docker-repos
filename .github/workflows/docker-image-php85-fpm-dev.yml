@@ -1,9 +1,10 @@
-name: PHP 8.2 Worker
+name: PHP 8.5 FPM (dev)
 
 on:
   push:
     branches:
       - main
+      - develop
 
 jobs:
   build-amd64:
@@ -23,14 +24,13 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Build and push (amd64)
+      - name: Build and push linux/amd64
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./php82-worker/Dockerfile # Use this format so we have access to the scripts folder
+          context: ./php85-fpm-dev
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.2-worker:latest
+          tags: ghcr.io/jield-webdev/docker-repos/php8.5-fpm:dev
 
   build-arm64:
     runs-on: ubuntu-24.04-arm
@@ -49,11 +49,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Build and push (arm64)
+      - name: Build and push linux/arm64
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./php82-worker/Dockerfile # Use this format so we have access to the scripts folder
+          context: ./php85-fpm-dev
           platforms: linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.2-worker:arm64
+          tags: ghcr.io/jield-webdev/docker-repos/php8.5-fpm:arm64
