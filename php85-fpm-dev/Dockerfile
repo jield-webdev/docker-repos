@@ -1,4 +1,4 @@
-FROM php:8.5.0alpha1-fpm
+FROM php:8.5.0beta1-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
