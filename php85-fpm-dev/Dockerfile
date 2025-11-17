@@ -14,12 +14,12 @@ RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-ph
 # Set working directory
 WORKDIR /var/www
 
-RUN apt-get install -y --no-install-recommends zip unzip git
+RUN apt-get update && \
+apt-get install -y --no-install-recommends zip unzip git
 
 RUN #install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql xdebug
 RUN install-php-extensions gd redis-6.3.0RC1 xsl apcu intl gmp gettext zip opcache soap bcmath snappy pdo_mysql
 
 
 COPY --from=ghcr.io/php/pie:bin /pie /usr/bin/pie
-RUN pie install xdebug/xdebug:3.5.0alpha3
 RUN pie install xdebug/xdebug:3.5.0alpha3
