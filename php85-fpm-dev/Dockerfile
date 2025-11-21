@@ -1,4 +1,4 @@
-FROM php:8.5.0RC5-fpm
+FROM php:8.5-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
@@ -18,7 +18,7 @@ RUN apt-get update && \
 apt-get install -y --no-install-recommends zip unzip git
 
 RUN #install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql xdebug
-RUN install-php-extensions gd redis-6.3.0RC1 xsl apcu intl gmp gettext zip opcache soap bcmath snappy pdo_mysql
+RUN install-php-extensions gd redis xsl apcu intl gmp gettext zip opcache soap bcmath snappy pdo_mysql
 
 
 COPY --from=ghcr.io/php/pie:bin /pie /usr/bin/pie

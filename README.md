@@ -24,9 +24,9 @@ PHP versions:
 
 - 8.1.33 (only Azure container)
 - 8.2.29
-- 8.3.27
-- 8.4.14
-- 8.5.0 RC2 (only FPM-DEV, no Xdebug)
+- 8.3.28
+- 8.4.15
+- 8.5.0
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (johan.vanderheide@jield.nl)
