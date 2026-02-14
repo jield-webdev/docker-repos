@@ -1,8 +1,8 @@
-FROM php:8.1.33-fpm
+FROM php:8.5-fpm
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.1 Nginx production Docker container (for Azure)"
+LABEL org.opencontainers.image.description="PHP 8.5 Nginx production Docker container (for Azure)"
 
 ENV TZ="Europe/Amsterdam"
 
@@ -16,6 +16,7 @@ RUN echo 'opcache.max_accelerated_files = 20000' >> /usr/local/etc/php/conf.d/do
 RUN echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-opcache.ini;
 RUN echo 'realpath_cache_ttl=600' >> /usr/local/etc/php/conf.d/docker-php-realpatch-cache.ini;
 RUN echo 'expose_php=off' >> /usr/local/etc/php/conf.d/docker-php-expose.ini;
+RUN echo 'error_reporting = E_ALL & ~E_DEPRECATED' >> /usr/local/etc/php/conf.d/docker-php-error_reporting.ini;
 
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -23,7 +24,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-RUN install-php-extensions gd redis-^5 xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql
+RUN #install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql
+RUN install-php-extensions gd redis xsl apcu intl gmp gettext zip opcache soap bcmath snappy pdo_mysql
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -39,7 +41,7 @@ RUN mkdir -p /tmp
 #Copy the nginx conf
 COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
 COPY .docker/supervisor/supervisord.nginx.conf /etc/supervisor/conf.d/supervisord.conf
-COPY .docker/scripts/init_container_php82.sh /init_container.sh
+COPY .docker/scripts/init_container_php84.sh /init_container.sh
 
 RUN chmod +x /init_container.sh \
     && mkdir -p /home/LogFiles/ \
