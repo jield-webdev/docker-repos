@@ -25,6 +25,11 @@ on:
         type: string
         default: 'linux/amd64,linux/arm64'
         description: 'Target platforms'
+      build_args:
+        required: false
+        type: string
+        default: ''
+        description: 'Optional build args (newline-separated)'
 
 jobs:
   build:
@@ -52,3 +57,4 @@ jobs:
           platforms: ${{ inputs.platforms }}
           push: true
           tags: ${{ inputs.tags }}
+          build-args: ${{ inputs.build_args }}

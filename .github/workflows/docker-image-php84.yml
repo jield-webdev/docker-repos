@@ -1,0 +1,54 @@
+name: PHP 8.4 Images
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  cli-dev:
+    uses: ./.github/workflows/docker-build-reusable.yml
+    with:
+      image_name: php8.4-cli
+      context: .
+      dockerfile: ./dockerfiles/php-cli-dev.Dockerfile
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.4-cli:dev
+        ghcr.io/jield-webdev/docker-repos/php8.4-cli:dev-${{ github.sha }}
+      build_args: |
+        PHP_VERSION=8.4
+
+  fpm-dev:
+    uses: ./.github/workflows/docker-build-reusable.yml
+    with:
+      image_name: php8.4-fpm
+      context: .
+      dockerfile: ./dockerfiles/php-fpm-dev.Dockerfile
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.4-fpm:dev
+        ghcr.io/jield-webdev/docker-repos/php8.4-fpm:dev-${{ github.sha }}
+      build_args: |
+        PHP_VERSION=8.4
+
+  nginx-azure:
+    uses: ./.github/workflows/docker-build-reusable.yml
+    with:
+      image_name: php8.4-nginx-azure
+      context: .
+      dockerfile: ./dockerfiles/php-nginx-azure.Dockerfile
+      tags: ghcr.io/jield-webdev/docker-repos/php8.4-nginx-azure:latest
+      build_args: |
+        PHP_VERSION=8.4
+
+  worker:
+    uses: ./.github/workflows/docker-build-reusable.yml
+    with:
+      image_name: php8.4-worker
+      context: .
+      dockerfile: ./dockerfiles/php-worker.Dockerfile
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.4-worker:latest
+        ghcr.io/jield-webdev/docker-repos/php8.4-worker:${{ github.sha }}
+      build_args: |
+        PHP_VERSION=8.4
