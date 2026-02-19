@@ -15,7 +15,9 @@ jobs:
       image_name: php8.5-cli
       context: .
       dockerfile: ./dockerfiles/php-cli-dev.Dockerfile
-      tags: ghcr.io/jield-webdev/docker-repos/php8.5-cli:dev
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.5-cli:dev
+        ghcr.io/jield-webdev/docker-repos/php8.5-cli:dev-${{ github.sha }}
       build_args: |
         PHP_VERSION=8.5
 
@@ -27,7 +29,9 @@ jobs:
       image_name: php8.5-fpm
       context: .
       dockerfile: ./dockerfiles/php-fpm-dev.Dockerfile
-      tags: ghcr.io/jield-webdev/docker-repos/php8.5-fpm:dev
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.5-fpm:dev
+        ghcr.io/jield-webdev/docker-repos/php8.5-fpm:dev-${{ github.sha }}
       build_args: |
         PHP_VERSION=8.5
 
@@ -39,7 +43,9 @@ jobs:
       image_name: php8.5-nginx-azure
       context: .
       dockerfile: ./dockerfiles/php-nginx-azure.Dockerfile
-      tags: ghcr.io/jield-webdev/docker-repos/php8.5-nginx-azure:latest
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.5-nginx-azure:latest
+        ghcr.io/jield-webdev/docker-repos/php8.5-nginx-azure:${{ github.sha }}
       build_args: |
         PHP_VERSION=8.5
 
@@ -51,6 +57,8 @@ jobs:
       image_name: php8.5-worker
       context: .
       dockerfile: ./dockerfiles/php-worker.Dockerfile
-      tags: ghcr.io/jield-webdev/docker-repos/php8.5-worker:latest
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.5-worker:latest
+        ghcr.io/jield-webdev/docker-repos/php8.5-worker:${{ github.sha }}
       build_args: |
         PHP_VERSION=8.5
