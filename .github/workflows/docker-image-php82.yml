@@ -9,48 +9,48 @@ on:
 jobs:
   cli-dev:
     uses: ./.github/workflows/docker-build-reusable.yml
+    secrets:
+      CR_PAT: ${{ secrets.CR_PAT }}
     with:
       image_name: php8.2-cli
       context: .
       dockerfile: ./dockerfiles/php-cli-dev.Dockerfile
-      tags: |
-        ghcr.io/jield-webdev/docker-repos/php8.2-cli:dev
-        ghcr.io/jield-webdev/docker-repos/php8.2-cli:dev-${{ github.sha }}
+      tags: ghcr.io/jield-webdev/docker-repos/php8.2-cli:dev
       build_args: |
         PHP_VERSION=8.2
 
   fpm-dev:
     uses: ./.github/workflows/docker-build-reusable.yml
+    secrets:
+      CR_PAT: ${{ secrets.CR_PAT }}
     with:
       image_name: php8.2-fpm
       context: .
       dockerfile: ./dockerfiles/php-fpm-dev.Dockerfile
-      tags: |
-        ghcr.io/jield-webdev/docker-repos/php8.2-fpm:dev
-        ghcr.io/jield-webdev/docker-repos/php8.2-fpm:dev-${{ github.sha }}
+      tags: ghcr.io/jield-webdev/docker-repos/php8.2-fpm:dev
       build_args: |
         PHP_VERSION=8.2
 
   nginx-azure:
     uses: ./.github/workflows/docker-build-reusable.yml
+    secrets:
+      CR_PAT: ${{ secrets.CR_PAT }}
     with:
       image_name: php8.2-nginx-azure
       context: .
       dockerfile: ./dockerfiles/php-nginx-azure.Dockerfile
-      tags: |
-        ghcr.io/jield-webdev/docker-repos/php8.2-nginx-azure:latest
-        ghcr.io/jield-webdev/docker-repos/php8.2-nginx-azure:${{ github.sha }}
+      tags: ghcr.io/jield-webdev/docker-repos/php8.2-nginx-azure:latest
       build_args: |
         PHP_VERSION=8.2
 
   worker:
     uses: ./.github/workflows/docker-build-reusable.yml
+    secrets:
+      CR_PAT: ${{ secrets.CR_PAT }}
     with:
       image_name: php8.2-worker
       context: .
       dockerfile: ./dockerfiles/php-worker.Dockerfile
-      tags: |
-        ghcr.io/jield-webdev/docker-repos/php8.2-worker:latest
-        ghcr.io/jield-webdev/docker-repos/php8.2-worker:${{ github.sha }}
+      tags: ghcr.io/jield-webdev/docker-repos/php8.2-worker:latest
       build_args: |
         PHP_VERSION=8.2
