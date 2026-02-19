@@ -1,11 +1,11 @@
 FROM php:8.4-fpm
 
-ARG TZ="Europe/Amsterdam"
-
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP 8.4 Nginx production Docker container (for Azure)"
 
+## Set a default timezone, can be overridden at build time with --build-arg TZ=Your/Timezone
+ARG TZ="Europe/Amsterdam"
 ENV TZ="${TZ}"
 
 # Copy tools from builder images
@@ -19,37 +19,37 @@ RUN apt-get update && \
     openssh-server \
     redis-server \
     nginx-full \
-    zip && \
-    # Configure PHP \
-    echo "date.timezone=${TZ}" >> /usr/local/etc/php/conf.d/docker-php-timezone.ini && \
-    echo 'memory_limit = 2G' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini && \
-    echo 'max_input_vars = 10000' >> /usr/local/etc/php/conf.d/docker-php-maxinputvars.ini && \
-    echo 'upload_max_filesize = 32M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini && \
-    echo 'post_max_size = 32M' >> /usr/local/etc/php/conf.d/docker-php-limits.ini && \
-    echo 'max_execution_time = 300' >> /usr/local/etc/php/conf.d/docker-php-max-execution.ini && \
-    echo 'expose_php=off' >> /usr/local/etc/php/conf.d/docker-php-expose.ini && \
-    echo 'display_errors=off' >> /usr/local/etc/php/conf.d/docker-php-errors.ini && \
-    echo 'log_errors=on' >> /usr/local/etc/php/conf.d/docker-php-errors.ini && \
-    echo 'error_reporting = E_ALL & ~E_DEPRECATED' >> /usr/local/etc/php/conf.d/docker-php-error_reporting.ini
+    zip
 
-# Optimize OPCache in a single RUN
-RUN echo 'opcache.enable=1' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
-    echo 'opcache.max_accelerated_files = 20000' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
-    echo 'opcache.validate_timestamps=0' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
-    echo 'opcache.memory_consumption=256' >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini && \
-    echo 'realpath_cache_ttl=600' >> /usr/local/etc/php/conf.d/docker-php-realpatch-cache.ini
+ENV HOME=/tmp \
+    RANDFILE=/tmp/.rnd \
+    PHP_DATE_TIMEZONE="${TZ}" \
+    PHP_MEMORY_LIMIT=2G \
+    PHP_MAX_EXECUTION_TIME=300 \
+    PHP_MAX_INPUT_VARS=10000 \
+    PHP_UPLOAD_MAX_FILESIZE=32M \
+    PHP_POST_MAX_SIZE=32M \
+    PHP_EXPOSE_PHP=off \
+    PHP_DISPLAY_ERRORS=off \
+    PHP_LOG_ERRORS=on \
+    PHP_OPCACHE_ENABLE=1 \
+    PHP_OPCACHE_MAX_ACCELERATED_FILES=20000 \
+    PHP_OPCACHE_VALIDATE_TIMESTAMPS=0 \
+    PHP_OPCACHE_MEMORY_CONSUMPTION=256 \
+    REALPATH_CACHE_TTL=600
+
 
 # Install PHP extensions
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql && \
     # Create directories \
     mkdir -p /tmp /home/LogFiles /opt/startup /var/log && \
-    # Setup SSH with password (Azure requirement)
+    # Setup SSH with password (Azure requirement) \
     echo "root:Docker!" | chpasswd && \
-    # Create non-root user
+    # Create non-root user \
     useradd -m -u 1000 www-app && \
     mkdir -p /var/www && \
     chown -R www-app:www-app /var/www && \
-    # Cleanup
+    # Cleanup \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
