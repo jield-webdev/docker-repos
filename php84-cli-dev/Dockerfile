@@ -18,7 +18,7 @@ ENV HOME=/tmp \
     RANDFILE=/tmp/.rnd \
     PHP_DATE_TIMEZONE="${TZ}" \
     PHP_MEMORY_LIMIT=-1 \
-    PHP_XDEBUG_MODE=coverage \
+    PHP_XDEBUG_MODE=coverage
 
 # Set working directory
 WORKDIR /var/www

@@ -17,7 +17,7 @@ ENV HOME=/tmp \
     RANDFILE=/tmp/.rnd \
     PHP_DATE_TIMEZONE="${TZ}" \
     PHP_MEMORY_LIMIT=-1 \
-    PHP_XDEBUG_MODE=coverage \
+    PHP_XDEBUG_MODE=coverage
 
 ## Install cron, redis and supervisor
 RUN apt-get update && apt-get install -y cron redis-server supervisor nano zip unzip
