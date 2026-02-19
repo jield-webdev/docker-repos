@@ -23,11 +23,13 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Build and push
+      - name: Build and push (Multi-platform)
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./php83-nginx-azure/Dockerfile #Use this format so we have access to the scripts folder
-          platforms: linux/amd64
+          file: ./php83-nginx-azure/Dockerfile
+          platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/jield-webdev/docker-repos/php8.3-nginx-azure:latest
+          tags: |
+            ghcr.io/jield-webdev/docker-repos/php8.3-nginx-azure:latest
+            ghcr.io/jield-webdev/docker-repos/php8.3-nginx-azure:${{ github.sha }}
