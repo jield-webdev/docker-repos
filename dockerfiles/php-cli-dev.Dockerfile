@@ -17,10 +17,13 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends zip unzip
 
 ENV HOME=/tmp \
-    RANDFILE=/tmp/.rnd \
-    PHP_DATE_TIMEZONE="${TZ}" \
-    PHP_MEMORY_LIMIT=-1 \
-    PHP_XDEBUG_MODE=coverage
+    RANDFILE=/tmp/.rnd
+
+RUN { \
+      echo "date.timezone=${TZ}"; \
+      echo "memory_limit=-1"; \
+      echo "xdebug.mode=coverage"; \
+    } > /usr/local/etc/php/conf.d/zz-custom.ini
 
 # Set working directory
 WORKDIR /var/www

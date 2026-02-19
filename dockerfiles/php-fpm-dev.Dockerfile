@@ -14,13 +14,16 @@ COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensi
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ENV HOME=/tmp \
-    RANDFILE=/tmp/.rnd \
-    PHP_DATE_TIMEZONE="${TZ}" \
-    PHP_MEMORY_LIMIT=2G \
-    PHP_MAX_EXECUTION_TIME=300 \
-    PHP_MAX_INPUT_VARS=10000 \
-    PHP_UPLOAD_MAX_FILESIZE=32M \
-    PHP_POST_MAX_SIZE=32M
+    RANDFILE=/tmp/.rnd
+
+RUN { \
+      echo "date.timezone=${TZ}"; \
+      echo "memory_limit=2G"; \
+      echo "max_execution_time=300"; \
+      echo "max_input_vars=10000"; \
+      echo "upload_max_filesize=32M"; \
+      echo "post_max_size=32M"; \
+    } > /usr/local/etc/php/conf.d/zz-custom.ini
 
 # Set working directory
 WORKDIR /var/www

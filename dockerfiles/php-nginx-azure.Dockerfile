@@ -24,21 +24,24 @@ RUN apt-get update && \
     zip
 
 ENV HOME=/tmp \
-    RANDFILE=/tmp/.rnd \
-    PHP_DATE_TIMEZONE="${TZ}" \
-    PHP_MEMORY_LIMIT=2G \
-    PHP_MAX_EXECUTION_TIME=300 \
-    PHP_MAX_INPUT_VARS=10000 \
-    PHP_UPLOAD_MAX_FILESIZE=32M \
-    PHP_POST_MAX_SIZE=32M \
-    PHP_EXPOSE_PHP=off \
-    PHP_DISPLAY_ERRORS=off \
-    PHP_LOG_ERRORS=on \
-    PHP_OPCACHE_ENABLE=1 \
-    PHP_OPCACHE_MAX_ACCELERATED_FILES=20000 \
-    PHP_OPCACHE_VALIDATE_TIMESTAMPS=0 \
-    PHP_OPCACHE_MEMORY_CONSUMPTION=256 \
-    REALPATH_CACHE_TTL=600
+    RANDFILE=/tmp/.rnd
+
+RUN { \
+      echo "date.timezone=${TZ}"; \
+      echo "memory_limit=2G"; \
+      echo "max_execution_time=300"; \
+      echo "max_input_vars=10000"; \
+      echo "upload_max_filesize=32M"; \
+      echo "post_max_size=32M"; \
+      echo "expose_php=off"; \
+      echo "display_errors=off"; \
+      echo "log_errors=on"; \
+      echo "opcache.enable=1"; \
+      echo "opcache.max_accelerated_files=20000"; \
+      echo "opcache.validate_timestamps=0"; \
+      echo "opcache.memory_consumption=256"; \
+      echo "realpath_cache_ttl=600"; \
+    } > /usr/local/etc/php/conf.d/zz-custom.ini
 
 # Install PHP extensions
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql && \
