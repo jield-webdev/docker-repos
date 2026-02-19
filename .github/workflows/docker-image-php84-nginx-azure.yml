@@ -18,11 +18,6 @@ jobs:
             tags: ghcr.io/jield-webdev/docker-repos/php8.4-nginx-azure:latest
             build_args: TZ=Europe/Amsterdam
 
-          - variant: ast-time
-            dockerfile: ./php84-nginx-azure/ast/Dockerfile
-            tags: ghcr.io/jield-webdev/docker-repos/php8.4-nginx-azure:ast-time
-            build_args: TZ=America/Glace_Bay
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
