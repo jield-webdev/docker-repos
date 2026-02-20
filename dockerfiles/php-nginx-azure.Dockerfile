@@ -8,8 +8,6 @@ LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP ${PHP_VERSION} Nginx production Docker container (for Azure)"
 
-ENV TZ="${TZ}"
-
 # Copy tools from builder images
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -24,7 +22,8 @@ RUN apt-get update && \
     zip
 
 ENV HOME=/tmp \
-    RANDFILE=/tmp/.rnd
+    RANDFILE=/tmp/.rnd \
+    TZ=${TZ}
 
 RUN { \
       echo "date.timezone=${TZ}"; \
@@ -41,7 +40,7 @@ RUN { \
       echo "opcache.validate_timestamps=0"; \
       echo "opcache.memory_consumption=256"; \
       echo "realpath_cache_ttl=600"; \
-    } > /usr/local/etc/php/conf.d/zz-custom.ini
+    } > /usr/local/etc/php/conf.d/docker-php-ext-custom.ini
 
 # Install PHP extensions
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql && \

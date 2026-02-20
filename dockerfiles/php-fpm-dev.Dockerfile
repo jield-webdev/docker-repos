@@ -8,7 +8,7 @@ LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
 LABEL org.opencontainers.image.description="PHP ${PHP_VERSION} FPM development Docker container"
 
-ENV TZ="${TZ}"
+ENV TZ=${TZ}
 
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -23,7 +23,7 @@ RUN { \
       echo "max_input_vars=10000"; \
       echo "upload_max_filesize=32M"; \
       echo "post_max_size=32M"; \
-    } > /usr/local/etc/php/conf.d/zz-custom.ini
+    } > /usr/local/etc/php/conf.d/docker-php-ext-custom.ini
 
 # Set working directory
 WORKDIR /var/www
