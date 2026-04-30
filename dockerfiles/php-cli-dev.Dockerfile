@@ -1,24 +1,31 @@
-FROM php:8.4-cli
+ARG PHP_VERSION=8.4
+FROM php:${PHP_VERSION}-cli
+
+ARG PHP_VERSION
+ARG TZ="Europe/Amsterdam"
 
 LABEL maintainer="Johan van der Heide <info@jield.nl>"
 LABEL org.opencontainers.image.source="https://github.com/jield-webdev/docker-repos"
-LABEL org.opencontainers.image.description="PHP 8.4 CLI development Docker container"
+LABEL org.opencontainers.image.description="PHP ${PHP_VERSION} CLI development Docker container"
 
-ENV TZ="Europe/Amsterdam"
+ENV TZ=${TZ}
 
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends zip unzip
+    apt-get install -y --no-install-recommends zip unzip
 
-RUN echo 'date.timezone=Europe/Amsterdam' >> /usr/local/etc/php/conf.d/docker-php-timezone.ini;
-RUN echo 'xdebug.mode=coverage' >> /usr/local/etc/php/conf.d/docker-php-xdebug.ini;
+ENV HOME=/tmp \
+    RANDFILE=/tmp/.rnd
+
+RUN { \
+      echo "date.timezone=${TZ}"; \
+      echo "memory_limit=-1"; \
+      echo "xdebug.mode=coverage"; \
+    } > /usr/local/etc/php/conf.d/docker-php-ext-custom.ini
 
 # Set working directory
 WORKDIR /var/www
 
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug
-
-RUN apt-get update && \
-apt-get install -y --no-install-recommends zip unzip git

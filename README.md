@@ -10,7 +10,7 @@ There are several flavours, all for PHP 8.2, 8.3, 8.4, and 8.5, with the followi
 
 Tags:
 
-* ghcr.io/jield-webdev/docker-repos/php8.X-cli:(dev,arm64)
+* ghcr.io/jield-webdev/docker-repos/php8.X-cli:(dev,latest)
 * ghcr.io/jield-webdev/docker-repos/php8.X-worker:(latest,arm64)
 * ghcr.io/jield-webdev/docker-repos/php8.X-fpm:(latest,dev,arm64)
 * ghcr.io/jield-webdev/docker-repos/php8.X-nginx-azure:latest
@@ -24,8 +24,10 @@ PHP versions:
 
 - 8.2.30
 - 8.3.30
-- 8.4.18
-- 8.5.3
+- 8.4.20
+- 8.5.5
+
+MySQL version 9.7.0
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (johan.vanderheide@jield.nl)
