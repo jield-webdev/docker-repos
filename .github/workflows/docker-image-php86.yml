@@ -18,7 +18,7 @@ jobs:
         ghcr.io/jield-webdev/docker-repos/php8.6-cli:dev
         ghcr.io/jield-webdev/docker-repos/php8.6-cli:dev-${{ github.sha }}
       build_args: |
-        PHP_VERSION=8.6.0alpha1
+        PHP_VERSION=8.6.0beta1
 
   fpm-dev:
     uses: ./.github/workflows/docker-build-reusable.yml
@@ -32,7 +32,7 @@ jobs:
         ghcr.io/jield-webdev/docker-repos/php8.6-fpm:dev
         ghcr.io/jield-webdev/docker-repos/php8.6-fpm:dev-${{ github.sha }}
       build_args: |
-        PHP_VERSION=8.6.0alpha1
+        PHP_VERSION=8.6.0beta1
 
   nginx-azure:
     uses: ./.github/workflows/docker-build-reusable.yml
@@ -46,7 +46,7 @@ jobs:
         ghcr.io/jield-webdev/docker-repos/php8.6-nginx-azure:latest
         ghcr.io/jield-webdev/docker-repos/php8.6-nginx-azure:${{ github.sha }}
       build_args: |
-        PHP_VERSION=8.6.0alpha1
+        PHP_VERSION=8.6.0beta1
 
   worker:
     uses: ./.github/workflows/docker-build-reusable.yml
@@ -60,4 +60,4 @@ jobs:
         ghcr.io/jield-webdev/docker-repos/php8.6-worker:latest
         ghcr.io/jield-webdev/docker-repos/php8.6-worker:${{ github.sha }}
       build_args: |
-        PHP_VERSION=8.6.0alpha1
+        PHP_VERSION=8.6.0beta1

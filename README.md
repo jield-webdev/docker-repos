@@ -22,11 +22,11 @@ single container app in Azure.
 
 PHP versions:
 
-- 8.2.32
-- 8.3.32
-- 8.4.23
-- 8.5.8
-- 8.6-alpha1
+- 8.2.33
+- 8.3.33
+- 8.4.24
+- 8.5.9
+- 8.6-beta1
 
 MySQL version 9.7.1
 
