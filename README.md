@@ -22,12 +22,13 @@ single container app in Azure.
 
 PHP versions:
 
-- 8.2.30
-- 8.3.30
-- 8.4.20
-- 8.5.5
+- 8.2.33
+- 8.3.33
+- 8.4.25
+- 8.5.10
+- 8.6-beta3
 
-MySQL version 9.7.0
+MySQL version 9.7.1
 
 Azure containers contain an SSH server and default Azure credentials.
 Johan van der Heide, Jield BV (johan.vanderheide@jield.nl)
