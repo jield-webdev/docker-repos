@@ -3,7 +3,7 @@ name: PHP 8.6 Images
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   cli-dev:
