@@ -31,4 +31,4 @@ PHP versions:
 MySQL version 9.7.1
 
 Azure containers contain an SSH server and default Azure credentials.
-Johan van der Heide, Jield BV (johan.vanderheide@jield.nl)
+Regards, Johan van der Heide, Jield BV (johan.vanderheide@jield.nl)
