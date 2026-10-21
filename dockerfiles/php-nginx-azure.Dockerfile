@@ -43,7 +43,7 @@ RUN { \
     } > /usr/local/etc/php/conf.d/docker-php-ext-custom.ini
 
 # Install PHP extensions
-RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql && \
+RUN install-php-extensions gd redis xsl igbinary intl gmp gettext zip opcache soap bcmath snappy pdo_mysql && \
     # Create directories \
     mkdir -p /tmp /home/LogFiles /opt/startup /var/log && \
     # Setup SSH with password (Azure requirement) \
@@ -58,6 +58,9 @@ RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcac
 
 # Set working directory
 WORKDIR /var/www
+
+# Installs APCu v5.1.28 directly from its official GitHub repository source
+RUN install-php-extensions krakjoe/apcu@v5.1.28
 
 # Copy configuration files
 COPY .docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
