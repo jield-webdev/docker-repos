@@ -26,11 +26,6 @@ on:
       platforms:
         required: false
         type: string
-        default: 'linux/amd64'
-        description: 'Target platforms'
-      platforms_legacy:
-        required: false
-        type: string
         default: 'linux/amd64,linux/arm64'
         description: 'Target platforms'
       build_args:
