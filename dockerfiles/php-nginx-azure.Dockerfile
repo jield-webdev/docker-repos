@@ -12,14 +12,26 @@ LABEL org.opencontainers.image.description="PHP ${PHP_VERSION} Nginx production 
 COPY --from=ghcr.io/mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Consolidate all RUN commands for PHP configuration and system packages
+# Install system packages and the latest stable NGINX from nginx.org
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+    gpg \
     supervisor \
     openssh-server \
     redis-server \
-    nginx-full \
-    zip
+    zip && \
+    install -d /etc/apt/keyrings && \
+    curl -fsSL https://nginx.org/keys/nginx_signing.key -o /tmp/nginx_signing.key && \
+    gpg --batch --dearmor -o /etc/apt/keyrings/nginx.gpg /tmp/nginx_signing.key && \
+    rm /tmp/nginx_signing.key && \
+    . /etc/os-release && \
+    echo "deb [signed-by=/etc/apt/keyrings/nginx.gpg] https://nginx.org/packages/debian ${VERSION_CODENAME} nginx" \
+      > /etc/apt/sources.list.d/nginx.list && \
+    printf 'Package: nginx\nPin: origin nginx.org\nPin-Priority: 900\n' > /etc/apt/preferences.d/nginx && \
+    apt-get -o APT::Update::Error-Mode=any update && \
+    apt-get install -y --no-install-recommends nginx && \
+    apt-get purge -y --auto-remove gpg && \
+    rm -rf /var/lib/apt/lists/*
 
 ENV HOME=/tmp \
     RANDFILE=/tmp/.rnd \
@@ -67,7 +79,14 @@ COPY .docker/ssh/sshd_config /etc/ssh/sshd_config
 COPY .docker/scripts/ssh_setup.sh /tmp/ssh_setup.sh
 
 # Set permissions and initialize
-RUN chmod +x /init_container.sh /tmp/ssh_setup.sh && \
+RUN rm -f /etc/nginx/conf.d/default.conf && \
+    sed -i \
+      -e 's/^user .*;/user www-data;/' \
+      -e 's/#gzip  on;/gzip on;/' \
+      -e '/include \/etc\/nginx\/conf\.d\/\*\.conf;/a\    include /etc/nginx/sites-enabled/*;' \
+      /etc/nginx/nginx.conf && \
+    nginx -t && \
+    chmod +x /init_container.sh /tmp/ssh_setup.sh && \
     chmod -R +x /opt/startup && \
     /tmp/ssh_setup.sh 2>&1 > /dev/null && \
     sed -i 's/user = www-data/user = www-app/' /usr/local/etc/php-fpm.d/www.conf && \

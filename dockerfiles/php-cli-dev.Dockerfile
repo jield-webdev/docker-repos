@@ -1,4 +1,4 @@
-ARG PHP_VERSION=8.4
+ARG PHP_VERSION=8.6.0
 FROM php:${PHP_VERSION}-cli
 
 ARG PHP_VERSION
@@ -28,4 +28,5 @@ RUN { \
 # Set working directory
 WORKDIR /var/www
 
+RUN #install-php-extensions gd xsl intl gmp gettext zip soap bcmath pdo_mysql xdebug-3.6.0alpha1
 RUN install-php-extensions gd redis xsl apcu igbinary intl gmp gettext zip opcache soap bcmath pdo_mysql xdebug

@@ -1,7 +1,7 @@
 # docker-repos
 
 Dedicate repo for Docker Repositories
-There are several flavours, all for PHP 8.2, 8.3, 8.4, and 8.5, with the following features:
+There are several flavours, all for PHP 8.2, 8.3, 8.4, 8.5, 8.6 (no extensions), with the following features:
 
 * NGINX (azure)
 * CLI (dev, arm64)
@@ -22,11 +22,11 @@ single container app in Azure.
 
 PHP versions:
 
-- 8.2.35
-- 8.3.36
-- 8.4.27
-- 8.5.12
-- 8.6-RC3
+- 8.2.36
+- 8.3.37
+- 8.4.28
+- 8.5.13
+- 8.6.0
 
 MySQL version 9.7.1
 
