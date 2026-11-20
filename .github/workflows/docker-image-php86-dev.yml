@@ -1,0 +1,31 @@
+name: PHP 8.6 Development Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cli-dev:
+    uses: ./.github/workflows/docker-build-reusable.yml
+    secrets:
+      CR_PAT: ${{ secrets.CR_PAT }}
+    with:
+      image_name: php8.6-cli
+      context: .
+      dockerfile: ./dockerfiles/php86-cli-dev.Dockerfile
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.6-cli:dev
+        ghcr.io/jield-webdev/docker-repos/php8.6-cli:dev-${{ github.sha }}
+
+  fpm-dev:
+    uses: ./.github/workflows/docker-build-reusable.yml
+    secrets:
+      CR_PAT: ${{ secrets.CR_PAT }}
+    with:
+      image_name: php8.6-fpm
+      context: .
+      dockerfile: ./dockerfiles/php86-fpm-dev.Dockerfile
+      tags: |
+        ghcr.io/jield-webdev/docker-repos/php8.6-fpm:dev
+        ghcr.io/jield-webdev/docker-repos/php8.6-fpm:dev-${{ github.sha }}
