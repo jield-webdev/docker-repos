@@ -24,11 +24,11 @@ install-php-extensions \
     igbinary/igbinary@2b1f5d62e3037b07c2a46499ac32091cdb41fb40 \
     "$sources/redis" \
     xdebug/xdebug@3.6.0alpha1 \
-    gd xsl intl gmp gettext zip soap bcmath snappy pdo_mysql
+    gd xsl intl mbstring gmp gettext zip soap bcmath snappy pdo_mysql
 
 # PHP 8.6 provides OPcache as a built-in Zend extension.
 php -r '
-    $required = explode(" ", "gd redis xsl apcu igbinary intl gmp gettext zip soap bcmath snappy pdo_mysql xdebug");
+    $required = explode(" ", "gd redis xsl apcu igbinary intl mbstring gmp gettext zip soap bcmath snappy pdo_mysql xdebug");
     $required[] = "Zend OPcache";
     $missing = array_filter($required, static fn ($extension) => !extension_loaded($extension));
     if ($missing) {
